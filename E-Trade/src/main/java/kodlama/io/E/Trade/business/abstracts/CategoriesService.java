@@ -15,3 +15,4 @@ public interface CategoriesService {
     void update(UpdateCategoriesRequest updateCategoriesRequest);
     void deleteById(int id);
 }
+

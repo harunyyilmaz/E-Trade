@@ -17,11 +17,11 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class CustomerManager implements CustomerService {
-    private CustomerRepository userRepository;
+    private CustomerRepository customerRepository;
     private ModelMapperService modelMapperService;
     @Override
     public List<GetAllCustomerResponse> getAll() {
-        List<Customer> users = this.userRepository.findAll();
+        List<Customer> users = this.customerRepository.findAll();
         List<GetAllCustomerResponse> getAllUserResponses = users.stream()
                 .map(user -> this.modelMapperService.forResponse()
                         .map(user, GetAllCustomerResponse.class)).collect(Collectors.toList());
@@ -30,25 +30,27 @@ public class CustomerManager implements CustomerService {
 
     @Override
     public GetByIdCustomerResponse getById(int id) {
-        Customer user = this.userRepository.findById(id).orElseThrow();
-        GetByIdCustomerResponse getByIdUserResponse = this.modelMapperService.forResponse().map(user, GetByIdCustomerResponse.class);
-        return getByIdUserResponse;
+        Customer user = this.customerRepository.findById(id).orElseThrow();
+        GetByIdCustomerResponse getByIdCustomerResponse = this.modelMapperService.forResponse().map(user, GetByIdCustomerResponse.class);
+        return getByIdCustomerResponse;
     }
 
     @Override
     public void add(CreateCustomerRequest createUserRequest) {
+        this.customerRepository.existsByLastName(createUserRequest.getEmail());
+
         Customer user = this.modelMapperService.forRequest().map(createUserRequest, Customer.class);
-        this.userRepository.save(user);
+        this.customerRepository.save(user);
     }
 
     @Override
     public void update(UpdateCustomerRequest updateUserRequest) {
         Customer user = this.modelMapperService.forRequest().map(updateUserRequest, Customer.class);
-        this.userRepository.save(user);
+        this.customerRepository.save(user);
     }
 
     @Override
     public void deleteById(int id) {
-        this.userRepository.deleteById(id);
+        this.customerRepository.deleteById(id);
     }
 }

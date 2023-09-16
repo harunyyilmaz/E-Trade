@@ -21,9 +21,9 @@ public class Customer {
     @Column(name="id")
     private int id;
     @Column(name="firstName")
-    private String firstName;
+    private String firstname;
     @Column(name="lastName")
-    private String LastName;
+    private String lastName;
     @Column(name="email")
     private String email;
     @Column(name="password")
