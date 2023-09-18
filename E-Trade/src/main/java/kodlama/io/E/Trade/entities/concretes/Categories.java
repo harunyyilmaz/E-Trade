@@ -22,10 +22,6 @@ public class Categories {
     @Column(name="name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name ="customer_id")
-    private Customer customer;
-
     @OneToMany(mappedBy = "categories")
     private List<Product> products;
 }

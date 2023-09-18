@@ -24,17 +24,16 @@ public class Customer {
     private String firstname;
     @Column(name="lastName")
     private String lastName;
-    @Column(name="email")
+    @Column(name="email" , unique = true)
     private String email;
-    @Column(name="password")
+    @Column(name="password" , unique = true)
     private String password;
     @Column(name="age")
     private int age;
     @Column(name="birthYear")
     private int birthYear;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Categories> categories;
+
 
 
 
