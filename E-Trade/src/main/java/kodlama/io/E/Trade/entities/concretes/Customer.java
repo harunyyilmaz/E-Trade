@@ -1,12 +1,15 @@
 package kodlama.io.E.Trade.entities.concretes;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import kodlama.io.E.Trade.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.List;
+
 
 @Table(name="customer")
 @Getter
@@ -14,12 +17,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Customer {
+public class Customer extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+
     @Column(name="firstName")
     private String firstname;
     @Column(name="lastName")
@@ -32,6 +32,8 @@ public class Customer {
     private int age;
     @Column(name="birthYear")
     private int birthYear;
+
+
 
 
 

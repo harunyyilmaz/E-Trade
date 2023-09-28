@@ -25,6 +25,7 @@ public class ETradeApplication {
 	}
 
 
+
 	@ExceptionHandler
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	public ProblemDetails handleBusinessException(BusinessExceptions businessExceptions){
@@ -50,3 +51,4 @@ public class ETradeApplication {
 		return new ModelMapper();
 	}
 }
+

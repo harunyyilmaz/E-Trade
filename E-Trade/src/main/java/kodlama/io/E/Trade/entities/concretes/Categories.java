@@ -1,11 +1,13 @@
 package kodlama.io.E.Trade.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import kodlama.io.E.Trade.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.List;
 
 @Table(name="categories")
@@ -14,14 +16,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Categories {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+public class Categories extends BaseEntity {
+
     @Column(name="name")
     private String name;
 
-    @OneToMany(mappedBy = "categories")
+    @OneToMany(mappedBy = "categories" , fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Product> products;
 }

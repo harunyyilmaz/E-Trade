@@ -7,9 +7,10 @@ import kodlama.io.E.Trade.dto.responses.GetAllProductResponse;
 import kodlama.io.E.Trade.dto.responses.GetByIdProductResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
 import java.util.List;
 
 @RestController
@@ -30,7 +31,7 @@ public class ProductsControllers {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void add(@RequestBody @Valid CreateProductRequest createProductRequest){
+    public void add(@RequestBody @Validated CreateProductRequest createProductRequest){
         this.productService.add(createProductRequest);
     }
 

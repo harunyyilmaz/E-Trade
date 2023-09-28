@@ -6,15 +6,16 @@ import kodlama.io.E.Trade.dto.request.UpdateCategoriesRequest;
 import kodlama.io.E.Trade.dto.responses.GetAllCategoriesResponse;
 import kodlama.io.E.Trade.dto.responses.GetByIdCategoriesResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("api/categories")
 @AllArgsConstructor
-public class CategoriesControllers {
+public class CategoriesControllers  {
     private CategoriesService categoriesService;
 
     @GetMapping
@@ -28,7 +29,7 @@ public class CategoriesControllers {
     }
 
     @PostMapping
-    public void add(@RequestBody @Valid CreateCategoriesRequest createCategoriesRequest){
+    public void add(@RequestBody @Validated CreateCategoriesRequest createCategoriesRequest){
         this.categoriesService.add(createCategoriesRequest);
     }
     @PutMapping

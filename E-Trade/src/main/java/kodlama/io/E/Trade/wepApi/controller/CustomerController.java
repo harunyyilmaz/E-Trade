@@ -6,9 +6,10 @@ import kodlama.io.E.Trade.dto.request.UpdateCustomerRequest;
 import kodlama.io.E.Trade.dto.responses.GetAllCustomerResponse;
 import kodlama.io.E.Trade.dto.responses.GetByIdCustomerResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
 import java.util.List;
 
 @RestController
@@ -27,7 +28,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public void add(@RequestBody @Valid CreateCustomerRequest createUserRequest){
+    public void add(@RequestBody @Validated CreateCustomerRequest createUserRequest){
         this.userService.add(createUserRequest);
     }
 
