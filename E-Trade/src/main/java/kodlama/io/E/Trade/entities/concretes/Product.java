@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Product extends BaseEntity {
+public class Product extends BaseEntity{
 
 
     @Column(name="name")
